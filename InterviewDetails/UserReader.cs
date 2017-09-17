@@ -153,12 +153,14 @@ namespace InterviewDetails
 
     public class ContactCollectionReader : ICollectionReader
     {
+        private static readonly Guid Id = Guid.NewGuid();
+
         public IDictionary<string, object> GetCollection()
         {
             var result = new Dictionary<string, object>
             {
                 { "Email", "myname@domain.com" },
-                { "Id", Guid.NewGuid() },
+                { "Id", ContactCollectionReader.Id },
             };
 
             Console.WriteLine("Contact collection read");
