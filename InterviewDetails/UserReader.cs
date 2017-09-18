@@ -249,11 +249,9 @@ namespace InterviewDetails
                 Type funcObjectPropertyType = typeof(FuncObject<>).MakeGenericType(new[] { funcObjectGenericType });
 
                 object funcProperty = Activator.CreateInstance(funcObjectPropertyType,
-                    (Func<object>) (() =>
-                        {
-                            return cachedCollection.Value[persistenceTypeAttribute.RecordKey ?? userPropertyInfo.Name];
-                        }
-                    ));
+                    (Func<object>) (() => cachedCollection.Value[
+                        persistenceTypeAttribute.RecordKey ?? userPropertyInfo.Name]));
+                    
 
                 userPropertyInfo.SetValue(result, funcProperty);
             });
